@@ -4,13 +4,14 @@ class BooksController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @books = Book.all || []
   end
 
   def show
   end
 
-   # 投稿データの保存
-   def create
+  def create
     @Book = Book.new(book_params)
     @Book.user_id = current_user.id
     @Book.save
