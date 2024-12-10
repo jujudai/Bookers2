@@ -7,17 +7,17 @@
         <% if @user.avatar.attached? %>
           <%= image_tag @user.avatar.variant(resize: "100x100").processed, alt: "User Avatar" %>
         <% else %>
-          <p>NO IMAGE</p>
+          <%= image_tag @user.get_profile_image(100,100) %>
         <% end %>
         <table class="table">
           <tbody>
             <tr>
               <th>name</th>
-              <th><%= current_user.name %></th>
+              <th><%= @user.name %></th>
             </tr>
             <tr>
               <th>introduction</th>
-              <th></th>
+              <th><%= @user.introduction %></th>
             </tr>
           </tbody>
         </table>
@@ -62,11 +62,10 @@
               <tr>
                 <td>
                   <a href="/users/<%= book.user.id %>">
-                    <%= image_tag book.user.avatar.present? ? book.user.avatar.variant(resize: "100x100").processed : "default_image.jpg", alt: "User Avatar", size: "100x100" %>
+                    <%= image_tag book.user.get_profile_image(100,100) %>
                   </a>
                 </td>
                 <td><a href="/books/<%= book.id %>"><%= book.title %></a></td>
-                <td><%= book.opinion %></td>
                 <td><a href="/books/<%= book.id %>/edit">Edit</a></td>
                 <td><a href="/books/<%= book.id %>">Show</a></td>
                 <td><%= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></td>

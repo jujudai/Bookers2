@@ -6,10 +6,20 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_one_attached :avatar
 
+  has_one_attached :profile_image
+
   
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     name = conditions.delete(:name)
     where(conditions).where(["name = :value", { value: name }]).first
+  end
+
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/default-image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
   end
 end
