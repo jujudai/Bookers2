@@ -66,9 +66,7 @@
                   </a>
                 </td>
                 <td><a href="/books/<%= book.id %>"><%= book.title %></a></td>
-                <td><a href="/books/<%= book.id %>/edit">Edit</a></td>
-                <td><a href="/books/<%= book.id %>">Show</a></td>
-                <td><%= link_to 'Delete', book_path(book), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= book.body %></td>
               </tr>
             <% end %>
           </tbody>
