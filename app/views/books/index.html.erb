@@ -23,9 +23,9 @@
         </table>
 
         <div class="row">
-        <a class="btn btn-outline-secondary btn-block edit_user_197646" href="/users/197646/edit">
-        <i class="fas fa-user-gear"></i>
-      </a>
+          <a class="btn btn-outline-secondary btn-block edit_user_197646" href="/users/197646/edit">
+            <i class="fas fa-user-gear"></i>
+          </a>
         </div>
 
         <!-- New Book Form -->
@@ -62,7 +62,7 @@
               <tr>
                 <td>
                   <a href="/users/<%= book.user.id %>">
-                    <%= image_tag book.user.get_profile_image(100,100) %>
+                    <%= image_tag book.user.get_profile_image(75,75) %>
                   </a>
                 </td>
                 <td><a href="/books/<%= book.id %>"><%= book.title %></a></td>

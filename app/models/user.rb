@@ -3,10 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :books, dependent: :destroy
+  has_many :books
   has_one_attached :avatar
 
   has_one_attached :profile_image
+
+
 
   
   def self.find_for_database_authentication(warden_conditions)
