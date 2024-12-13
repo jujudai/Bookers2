@@ -2,6 +2,18 @@
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row d-flex">
+    
+      <% if @book && @book.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h3>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <div class="col-md-3">
         <h2>User info</h2>
         <% if @user.avatar.attached? %>
@@ -28,7 +40,6 @@
           </a>
         </div>
 
-        <!-- New Book Form -->
         <h2 class="mt-3">New book</h2>
         <form action="/books" accept-charset="UTF-8" method="post">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
