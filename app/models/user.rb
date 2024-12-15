@@ -5,11 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :books
   has_one_attached :avatar
-
   has_one_attached :profile_image
-
-
-
+  validates :name, length: { minimum: 2, message: "Name is too short (minimum is 2 characters)" }
   
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

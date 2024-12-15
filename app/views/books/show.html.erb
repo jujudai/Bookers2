@@ -17,7 +17,7 @@
                   </td>
                   <td><%= @book.body %></td>
                   <td><a class="btn btn-sm btn-success edit_book_<%= @book.id %>" href="/books/<%= @book.id %>/edit">Edit</a></td>
-                  <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_<%= @book.id %>" rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
+                  <td><a class="btn btn-sm btn-danger destroy_book_<%= @book.id %>" rel="nofollow" data-method="delete" href="/books/<%= @book.id %>">Destroy</a></td>
               </tr>
             </tbody>
           </table>
