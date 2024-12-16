@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
+
   def show
-    @book = Book.find(params[:id])
     @user = User.find(params[:id])
     @books = @user.books
-    @user = @book.user
   end
 
   def edit
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user != current_user
       flash[:alert]
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 end
